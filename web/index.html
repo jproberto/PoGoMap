@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>RaidMap</title>
+		<link rel="stylesheet" href="estilos.css">
+		
+	</head>
+
+	<body>
+		<h1>PokémonGo Raid Map</h1>
+		
+		<div id="mapa"></div>
+		
+		<div>
+            <p class="greeting-id">The ID is </p>
+            <p class="greeting-content">The content is </p>
+        </div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<!-- não funciona por algum erro no endereço pq essa página não tá dentro do tomcat -->
+		<script>
+		$(document).ready(function() {
+    $.ajax({
+        url: "http://localhost:8080/ginasios",
+		data: data
+    }).fail(function(data) {
+	 alert("erro");
+	}).then(function(data) {
+       $('.greeting-id').append(data.id);
+       $('.greeting-content').append(data.content);
+    });
+});
+		</script>
+		
+		<script src="mapa.js"></script>
+		<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDa7S9ynY2jRzyMAdf3VrNDpa2DOmWT84&callback=iniciarMapa">
+		</script>
+	</body>
+</html>
